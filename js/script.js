@@ -24,5 +24,5 @@ list.sort();
 
 // Ciclo per stampare i cognomi sommando 1 al contatore per restituire a schermo l' ordine umano
 for ( var i = 0; i < list.length; i++ ) {
-  console.log( ( i + 1 + " - " + list[i] ) );
+  document.getElementById('screen_list').innerHTML += "<li>" + ( ( i + 1 + " - " + list[i] ) ) + "</li>";
 }
