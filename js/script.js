@@ -4,16 +4,13 @@ var list = [], surname, cycleEnd = false;
 // Ciclo con conferma per essere interrotto
 do {
   // L' utente inserisce il cognome
-  surname = prompt("Inserisci un cognome \n\n\n(inserisci \"0\" per interrompere)");
+  surname = prompt("Inserisci un cognome \n\n(Premi \"Annulla\" per interrompere)");
   // Controllo se è stato inserito un numero
   if ( !isNaN( parseInt( surname ) ) ) {
-    // Se è "0" allora si procede con la conferma per terminare, altrimenti inizia di nuovo
-    if ( parseInt( surname ) == 0 ) {
-      cycleEnd = confirm("Premere \"Ok\" per smettere di inserire i cognomi e procedere, oppure \"Annulla\" per continuare.");
-    // Se è un numero diverso da "0" esce il messaggio di errore e inizia di nuovo
-    } else {
-      alert("I numeri non sono un inserimento valido, riprova \n\n\n(inserisci \"0\" per interrompere)");
-    }
+      alert("I numeri non sono un inserimento valido, riprova");
+  // Controllo se è stato premuto "Annulla"
+  } else if ( surname == null ) {
+    cycleEnd = confirm("Premere \"Ok\" per smettere di inserire i cognomi e procedere, oppure \"Annulla\" per continuare.");
   } else {
     list.push( surname );
   }
