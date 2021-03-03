@@ -1,5 +1,5 @@
 // Dichiarazione variabili
-var list = [], surname, cycleEnd, containsNumbers, j;
+var list = [], surname, cycleEnd, containsNumbers, j, i;
 
 // Ciclo con conferma per essere interrotto
 do {
@@ -7,7 +7,7 @@ do {
   surname = prompt("Inserisci un cognome \n\n(Premi \"Annulla\" per interrompere)");
   containsNumbers = false;
   cycleEnd = false;
-  // Controllo se è stato inserito un numero
+  // Controllo se è stato inserito un numero per ogni carattere
   if ( surname !=null ) {
     j = 0;
     while ( j < surname.length && containsNumbers == false ) {
@@ -22,6 +22,9 @@ do {
     } else if (surname.length === 0 || !surname.trim()) {
       alert("Non hai inserito nulla, riprova");
     } else {
+        // Funzione per rendere tutte le lettere minuscole e poi la prima maiuscola
+        surname = surname.toLowerCase();
+        surname = surname.charAt(0).toUpperCase() + surname.slice(1);
         list.push( surname );
     }
     // Controllo se è stato premuto "Annulla"
@@ -34,6 +37,6 @@ do {
 list.sort();
 
 // Ciclo per stampare i cognomi sommando 1 al contatore per restituire a schermo l' ordine umano
-for ( var i = 0; i < list.length; i++ ) {
+for ( i = 0; i < list.length; i++ ) {
   document.getElementById('screen_list').innerHTML += "<li>" + ( ( i + 1 + " - " + list[i] ) ) + "</li>";
 }
