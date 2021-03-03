@@ -1,18 +1,32 @@
 // Dichiarazione variabili
-var list = [], surname, cycleEnd = false;
+var list = [], surname, cycleEnd, containsNumbers, j;
 
 // Ciclo con conferma per essere interrotto
 do {
   // L' utente inserisce il cognome
   surname = prompt("Inserisci un cognome \n\n(Premi \"Annulla\" per interrompere)");
+  containsNumbers = false;
+  cycleEnd = false;
   // Controllo se è stato inserito un numero
-  if ( !isNaN( parseInt( surname ) ) ) {
+  if ( surname !=null ) {
+    j = 0;
+    while ( j < surname.length && containsNumbers == false ) {
+      if ( !isNaN( parseInt( surname[j] ) ) ) {
+        containsNumbers = true;
+      }
+      j++;
+    }
+    if ( containsNumbers == true ) {
       alert("I numeri non sono un inserimento valido, riprova");
-  // Controllo se è stato premuto "Annulla"
-  } else if ( surname == null ) {
-    cycleEnd = confirm("Premere \"Ok\" per smettere di inserire i cognomi e procedere, oppure \"Annulla\" per continuare.");
+    // Controllo se l' input è vuoto o contiene soltanto spazi
+    } else if (surname.length === 0 || !surname.trim()) {
+      alert("Non hai inserito nulla, riprova");
+    } else {
+        list.push( surname );
+    }
+    // Controllo se è stato premuto "Annulla"
   } else {
-    list.push( surname );
+    cycleEnd = confirm("Premere \"Ok\" per smettere di inserire i cognomi e procedere, oppure \"Annulla\" per continuare.");
   }
 } while ( cycleEnd == false )
 
